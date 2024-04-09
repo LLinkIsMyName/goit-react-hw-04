@@ -26,13 +26,14 @@ const App = () => {
   };
 
   const onSubmit = (newQuery) => {
-    if (newQuery === query) {
-      return;
-    }
-    setPage(1);
-    setGallery([]);
-    setQuery(newQuery);
-  };
+  if (newQuery.trim() === query.trim()) {
+    return;
+  }
+  setPage(1);
+  setGallery([]);
+  setQuery(newQuery.trim());
+};
+
 
   const fetchImages = async (query, page) => {
     try {
