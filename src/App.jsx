@@ -79,6 +79,10 @@ const App = () => {
   };
 
   useEffect(() => {
+  console.log('Query:', query);
+  console.log('Page:', page);
+  console.log('More Results:', moreResults);
+  
   if (query !== '') {
     setPage(1);
     setGallery([]);
@@ -87,6 +91,9 @@ const App = () => {
 }, [query]);
 
 useEffect(() => {
+  console.log('Page:', page);
+  console.log('More Results:', moreResults);
+  
   if (page > 1 && moreResults) {
     fetchImages(query, page);
   }
