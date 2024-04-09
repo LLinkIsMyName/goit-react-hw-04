@@ -78,16 +78,19 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (query !== '') {
-      fetchImages(query, 1);
-      setPage(1);
-      setGallery([]);
-      setMoreResults(true);
-    }
-    if (page > 1 && moreResults) {
-      fetchImages(query, page);
-    }
-  }, [query, page, moreResults]);
+  if (query !== '') {
+    setPage(1);
+    setGallery([]);
+    setMoreResults(true);
+  }
+}, [query]);
+
+useEffect(() => {
+  if (page > 1 && moreResults) {
+    fetchImages(query, page);
+  }
+}, [page, moreResults]);
+
 
   const loadMore = async () => {
     if (page < maxPage) {
